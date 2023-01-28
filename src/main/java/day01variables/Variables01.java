@@ -1,4 +1,4 @@
-package main.java.day01variables;
+package day01variables;
 
 public class Variables01 {
 
