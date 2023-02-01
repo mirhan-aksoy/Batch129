@@ -24,7 +24,7 @@ public class Doktor {
                     String eachKey = each.getKey();
                     String eachValue = each.getValue();
                     String[] eachValurArr = eachValue.split(", ");
-                    if (each.getKey().equals("Allergist")) {
+                    if (each.getKey().equalsIgnoreCase("Allergist")) {
                         System.out.println("\n\t === ILGILI DOKTOR ===\n" +
                                 "UNVAN              ISIM      SOYISIM");
                         System.out.printf("%-14s    %-7s    %-8s", eachKey, eachValurArr[0], eachValurArr[1]);
