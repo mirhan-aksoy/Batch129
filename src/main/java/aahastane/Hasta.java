@@ -104,10 +104,6 @@ public class Hasta {
 
     }
 
-
-
-
-
     public static String acilHastaliklar() {
         StringBuilder str = new StringBuilder();
         List<String> acilHastaliklarListesi = new ArrayList<>(Arrays.asList("Kalp Hastaliklari", "Diabet", "Migren", "Böbrek Yetmezligi"));
