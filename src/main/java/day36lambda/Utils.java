@@ -1,7 +1,5 @@
 package day36lambda;
 
-import java.util.List;
-
 public class Utils {
     //Lambda ile kod yazarken once Javanin bize verdigi methodlari method reference icinde kullanmamiz tavsiye edilir
     //Eger method reference yetmiyorsa Util Class a koyup oradan kullaniriz
@@ -12,7 +10,7 @@ public class Utils {
     public static int getLengthSquare(String s){
         return s.length()*s.length();
     }
-    public static boolean isEven(String s){
+    public static boolean isLenghtEven(String s){
         return s.length()%2==0;
     }
     public static String getLastChar(String s){
@@ -20,5 +18,16 @@ public class Utils {
     }
     public static void printInTheSameLineWithSpace(Object obj){
         System.out.println(obj + " ");
+    }
+    public static boolean isNumberEven(int x) {
+        return x%2==0;
+    }
+    public static int getsumofdijits(int x){
+        int sum=0;
+        while (x!=0){
+            sum=sum+ x%10;
+            x=x/10;
+        }
+        return sum;
     }
 }
