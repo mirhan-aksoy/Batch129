@@ -5,17 +5,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Arrays.stream;
+
 public class Lam2Tekrar {
     public static void main(String[] args) {
 
-        List<Double>myList = new ArrayList<>();
-        myList.add(12.0);
-        myList.add(4.0);
-        myList.add(7.0);
-        myList.add(3.6);
-        myList.add(26.8);
-        myList.add(38.4);
-        myList.add(26.8);
 
         List<String>list = new ArrayList<>();
         list.add("Tom");
@@ -26,8 +20,7 @@ public class Lam2Tekrar {
         list.add("Brad");
         list.add("Cuneyt");
 
-        List<Double> yarim = tekrarsizYarisiBestenBuyukList(myList);
-        System.out.println("yarim = " + yarim);
+
         System.out.println();
         tekrarsizbuyukalfabetik(list);
         System.out.println();
@@ -41,22 +34,15 @@ public class Lam2Tekrar {
         System.out.println();
         printAllSortWithLengthUpperDistinctSameLengthsInAlphabeticalOrder(list);
         System.out.println();
-      //  System.out.println(removeElementIfTheLengthGreaterThanFive(list));
-        System.out.println();
-        System.out.println(removeElementIfStartsWithAorEndsWithd(list));
-        System.out.println();
-        System.out.println(printlenghtSquare(list));
-        System.out.println();
-        System.out.println(printelementlenghteven(list));
+        System.out.println(bestenBuyukOlanlar(list));
+        System.out.println(kareal(list));
+        System.out.println(karaktercift(list));
 
 
     }//1) ELEMANLARINYARINISI BULAK İÇİN METOT OLUSTURUNUZ . (TEKRARSIZ 5 TEN BÜYÜK ELEMANLARI LİST İÇİNDE YAZAN)
 
-    public static List<Double> tekrarsizYarisiBestenBuyukList(List<Double> myList){
-        return (List<Double>) myList.stream().distinct().
-                filter(t->t>5).map(t->t/2).sorted(Comparator.reverseOrder()).collect(Collectors.toList());
 
-    } //Example 2: Tum list elemanlarini buyuk harfle alfabetik sirada tekrarsiz olarak yazdiriniz
+     //Example 2: Tum list elemanlarini buyuk harfle alfabetik sirada tekrarsiz olarak yazdiriniz
     public static void tekrarsizbuyukalfabetik(List<String> list){
         list.stream().distinct().map(t->t.toUpperCase()).sorted().forEach(t-> System.out.print(t+" "));
 
@@ -94,26 +80,27 @@ public class Lam2Tekrar {
         list.stream().distinct().map(String::toUpperCase).sorted(Comparator.comparing(String::length).
                 thenComparing(Comparator.naturalOrder())).forEach(System.out::println);
 
-    } //Example 7: Karakter sayisi 5 den fazla olan elemanlari siliniz ve sonucu list olarak yazdiriniz
-     // public static List<String> removeElementIfTheLengthGreaterThanFive(List<String>list){
-       // list.removeIf(t->t.length()>5);
-       // return list;
-    //  }
-      //Example 8: "A" ile baslayan veya "d" ile biten elemanlari siliniz
-      public static List<String>removeElementIfStartsWithAorEndsWithd(List<String>list) {
-          list.removeIf(t -> t.startsWith("A") || t.endsWith("d"));
-          return list.stream().distinct().collect(Collectors.toList());
-
-      } //Example 9:List elemanlarini karakter sayilarinin karelerini aliniz ve bir list olarak ekrana yazdiriniz
-
-    public static List<Integer> printlenghtSquare(List<String> list){
-       return list.stream().map(Utils::getLengthSquare).collect(Collectors.toList());
-
-    }//Example 10: List elemanlarindan karakter sayisi cift sayi olanlari bir list icinde ekrana yazdiriniz
-
-    public static List<String> printelementlenghteven(List<String> list){
-       return list.stream().filter(Utils::isLenghtEven).collect(Collectors.toList());
     }
+    //Example 7: Karakter sayisi 5 den fazla olan elemanlari siliniz ve sonucu list olarak yazdiriniz
+
+    public static List<String> bestenBuyukOlanlar(List<String> list){
+        list.removeIf(t -> t.length() > 5);
+        return list;
+
+    }
+    //5 ten kucuklerin karesini al
+    public static List<Integer> kareal(List<String> list){
+      return   list.stream().map(t->t.length()*t.length()).collect(Collectors.toList());
+    }
+    //karakter saısı çift olanları yazdır
+
+    private static List<String> karaktercift(List<String> list){
+        list.stream().filter(t->t.length()%2==0).collect(Collectors.toList());
+        return list;
+
+    }
+
+
 
 
 

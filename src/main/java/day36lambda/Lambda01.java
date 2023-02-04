@@ -35,9 +35,9 @@ public class Lambda01 {
         System.out.println();
         printAllSortWithLengthUpperDistinctSameLengthsInAlphabeticalOrder(list);
         System.out.println();
-        //System.out.println(removeElementIfTheLengthGreaterThanFive(list));//[Tom, John, Ajda, Tom, Brad]
+        System.out.println(removeElementIfTheLengthGreaterThanFive(list));//[Tom, John, Ajda, Tom, Brad]
         System.out.println();
-        // System.out.println(removeElementIfStartsWithAorEndsWithd(list));//[Tom, John, Tom, Cuneyt]
+         System.out.println(removeElementIfStartsWithAorEndsWithd(list));//[Tom, John, Tom, Cuneyt]
         System.out.println();
         System.out.println(printLengthSquare(list));//[9, 16, 16, 64, 9, 16, 36]
         System.out.println();
@@ -90,27 +90,37 @@ public class Lambda01 {
                 thenComparing(Comparator.naturalOrder())).
                 forEach(System.out::println);
     }
-    //Example 7: Karakter sayisi 5 den fazla olan elemanlari siliniz ve sonucu list olarak yazdiriniz
-    //  public static List<String>removeElementIfTheLengthGreaterThanFive(List<String>list){
-    //      list.removeIf(t->t.length()>5);
-    //      return list;
-    //  }
+   // Example 7: Karakter sayisi 5 den fazla olan elemanlari siliniz ve sonucu list olarak yazdiriniz
+      public static List<String>removeElementIfTheLengthGreaterThanFive(List<String>list){
+          list.
+                  removeIf(t->t.length()>5);
+        return list;
+      }
     //Example 8: "A" ile baslayan veya "d" ile biten elemanlari siliniz
-    //  public static List<String>removeElementIfStartsWithAorEndsWithd(List<String>list){
-    //     list.removeIf(t->t.startsWith("A") || t.endsWith("d"));
+      public static List<String>removeElementIfStartsWithAorEndsWithd(List<String>list){
+        list.
+                removeIf(t->t.startsWith("A") || t.endsWith("d"));
     //Bazen "stream()" methodu bize lazim olan method'lara ulasmamiza engel olur bu yuzden
     //stream() methodunu kullanmayiz. "removeIf()" methodunda oldugu gibi.
     //Fakat stream() methodu daha sonradan kullanmamiz gerekebilir. Bu durumda stream() methodunu
     // kullanarak istedigimiz method'lara ulasiriz, distinct() method'una ulastigimiz gibi.
     //Sonuc bize list olarak lazim ise "collect(Collectors.toList())" ile sonucu list'e ceviririz.
-    //    return list.stream().distinct().collect(Collectors.toList());
-    //  }
+        return list.
+                stream().
+                distinct().
+                collect(Collectors.toList());
+      }
     //Example 9:List elemanlarini karakter sayilarinin karelerini aliniz ve bir list olarak ekrana yazdiriniz
     public static List<Integer>printLengthSquare(List<String>list){
-        return list.stream().map(Utils::getLengthSquare).collect(Collectors.toList());
+        return list.stream().
+                map(Utils::getLengthSquare).
+                collect(Collectors.toList());
     }
     //Example 10: List elemanlarindan karakter sayisi cift sayi olanlari bir list icinde ekrana yazdiriniz
     public static List<String>printElementsLengthEven(List<String>list){
-        return list.stream().filter(Utils::isLenghtEven).collect(Collectors.toList());
+        return list.
+                stream().
+                filter(Utils::isLenghtEven).
+                collect(Collectors.toList());
     }
 }
