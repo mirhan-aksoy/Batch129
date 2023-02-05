@@ -7,20 +7,14 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class Lambda02 {
-
     /*
             AnyMath: Vereceğimiz şarta bağlı olarak Stream içerisinde gezinir ve
                      herhangi bir elemanla eşleşme durumunda true dönecektir.
-
-
             AllMatch: Verilen şarta göre Stream içerisindeki tüm elemanların
                       bu şarta uyması durumunda true dönecektir.
-
-
             NoneMatch: Sarta göre Stream içindeki hiç bir
                        elemanın şartı sağlamaması durumunda true dönecektir.
      */
-
     public static void main(String[] args) throws IOException {
 
         //1) LambdaTextFile dosyasi icindeki metni console'a yazdiran kodu yaziniz.

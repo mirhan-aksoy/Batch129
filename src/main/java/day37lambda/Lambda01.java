@@ -29,9 +29,9 @@ public class Lambda01 {
         System.out.println();
         System.out.println(getsumfromtreetoeit2(myList));
         System.out.println();
-        System.out.println(getfaktoriel(myList));
+        System.out.println(getfaktoriel(5));
         System.out.println();
-        getSumOfEvenBetvenTwoint(5,8);
+        System.out.println(getSumOfEvenBetvenTwoint(10, 5));
         System.out.println();
         System.out.println(getsumofdijitsbeetwentwoints(12, 18));
 
@@ -57,31 +57,37 @@ public class Lambda01 {
 
     }
     // 4 - size verilen sayının faktöriyelini hesaplayın
-    public static int getfaktoriel(List<Integer> x){
-        return IntStream.rangeClosed(1, 5).reduce(Math::multiplyExact).getAsInt();
+    public static int getfaktoriel(int x) {
+        if (x == 0) {
+            return 1;
+        } else if (x < 0) {
+            System.out.println("faktoriyel negatif sayılarla yapılamaz");
+            return -1;
+        } else {
+            return IntStream.rangeClosed(1, x).reduce(Math::multiplyExact).getAsInt();
+        }
 
-    }
-    //5) Size verilen iki tamsayi arasindaki tum cift sayilarin toplamini veren kodu yaziniz.
+        }
+        //5) Size verilen iki tamsayi arasindaki tum cift sayilarin toplamini veren kodu yaziniz.
     public static int getSumOfEvenBetvenTwoint(int a, int b){
-        if(a>b){
-           int temp=a;
-           a=b;
-           b=temp;
+        if (a > b) {
+            int temp = a;
+            a = b;
+            b = temp;
         }
-        return IntStream.rangeClosed(a+1, b).filter(Utils::isNumberEven).sum();
-    }
-    // 6.soru size verilen iki tamsayi arasındaki tüm tamsayıların
-    // rakamları toplamını veren kodu yazınınz 12-18 ==> 13 14 15 16 17 ==>
-    // rakamlari teker teker alip sonradan toplayacak streamdeki elemanlar degiscek bu yuzden reduce yerine map kullandik.
-    public static int getsumofdijitsbeetwentwoints(int a, int b){
-        if(a>b){
-            int temp=a;
-            a=b;
-            b=temp;
+
+            return IntStream.rangeClosed(a + 1, b).filter(Utils::isNumberEven).sum();
         }
-       return IntStream.range(a+1, b).map(Utils::getsumofdijits).sum();
-    }
-
-
-}
+        // 6.soru size verilen iki tamsayi arasındaki tüm tamsayıların
+        // rakamları toplamını veren kodu yazınınz 12-18 ==> 13 14 15 16 17 ==>
+        // rakamlari teker teker alip sonradan toplayacak streamdeki elemanlar degiscek bu yuzden reduce yerine map kullandik.
+        public static int getsumofdijitsbeetwentwoints ( int a, int b){
+            if (a > b) {
+                int temp = a;
+                a = b;
+                b = temp;
+            }
+            return IntStream.range(a + 1, b).map(Utils::getsumofdijits).sum();
+        }
+    }//class
 
